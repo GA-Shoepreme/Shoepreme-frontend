@@ -1,0 +1,27 @@
+{
+    "air_jordans" : {
+        "backgroundImage": "./assets/images/air_jordan_bg.jpeg",
+        "logo": "./assets/images/air_jordan_logo.svg",
+        "description": "Since 1985, the sneakers with Michael Jordan’s name and world-renowned “Jumpman” silhouette have helped define and shape sneaker culture. It began with a standard Nike high-top and evolved with daring designs with each iteration. From graphic prints to patent leather to fighter planes and Ferrari-inspired designs, Jordan sneakers routinely transcend their basketball roots by refreshing their initial offering with new looks and color schemes to remain relevant to each new generation."
+
+    },
+    "nike" : {
+        "backgroundImage": "./assets/images/nike_bg.jpg",
+        "logo": "./assets/images/nike_logo.svg",
+        "description": "In 1964, founders Bill Bowerman and Phil Knight turned their Blue Ribbon Sports venture into the Nike we know today. With roots in the University of Oregon's running team, Knight and Bowerman launched Nike and built the Swoosh into a high-profile brand synonymous with sneakers, athletic apparel, and the sports lifestyle, with help from the Air Jordan line along the way. From running to basketball to skating, some of the world's greatest athletes wear Nike footwear, helping to cement a legacy that has advanced and innovated sneaker culture for decades."
+    },
+    "adidas" : {
+        "backgroundImage": "./assets/images/adidas_bg.jpeg",
+        "logo": "./assets/images/adidas_logo.svg",
+        "description": "Named for founder Adolf Dassler, the German-engineered adidas brand launched in 1948 with intentions to make an immediate impact in sports. From Olympic sprinting to soccer to basketball, the famous three stripes were designed for sneaker support before becoming the instantly recognizable adidas brand logo. After proving itself in sports, adidas made its presence felt in lifestyle with help from international hip-hop legends Run DMC."
+    },
+    "yeezy" : {
+        "backgroundImage": "./assets/images/yeezy_bg.jpg",
+        "logo": "./assets/images/yeezy_logo.svg",
+        "description": "Chicago-native Kanye West broke new ground in 2015 when he delved into the worlds of fashion and sneakers. Having worked with Nike, Louis Vuitton and A Bathing Ape, West linked with adidas to create the Yeezy line. Staples such as the Yeezy 350, Yeezy 500 and Yeezy 700 have become cult favorites, as West continues to push the boundaries of sneaker design."
+    },
+    "more_sneakers" : {
+        "backgroundImage": "./assets/images/shop_all_bg.jpg",
+        "description": "Air Jordan, Nike, and Yeezy aren't always the first brands that come to mind when people are looking for sneakers. And those aren't the only items we carry at Flight Club. Not even close. Whether you're looking for New Balance, Reebok, Converse, ASICS, or more, we carry a wide selection of the kicks you seek."
+    }
+}
