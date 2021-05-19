@@ -1,5 +1,6 @@
 import React,{ useState, useEffect } from 'react';
 import CheckOutCard from '../CheckOutCard'
+import NoItemCartPage from '../page/NoItemCartPage'
 
 function CheckOutPage({itemCounts, cart}) {
 
@@ -25,8 +26,11 @@ function CheckOutPage({itemCounts, cart}) {
         }
     },[subTotal])
 
-    return (
-        <div className='checkOutContainer'>
+    const checkOutContainer = (cart)=>{
+        if(cart.length>1){
+
+            return(
+            <div className='checkOutContainer'>
             {console.log(cart)}
             <CheckOutCard header={false} cardType={'Order Summary'} totalPrice={totalPrice} itemCounts={itemCounts}/>
 
@@ -34,9 +38,15 @@ function CheckOutPage({itemCounts, cart}) {
 
             <CheckOutCard header={true} cardType={'Check Out Information'}/>
             <CheckOutCard header={false}/>
+            </div>
+            )
+        }
+        return <NoItemCartPage/>
+    }
 
-        </div>
-    );
+    return (
+        checkOutContainer(cart)
+    )
 }
 
 export default CheckOutPage;

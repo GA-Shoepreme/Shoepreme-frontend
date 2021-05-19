@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react';
 import FilterBodyBoxGrid from '../FilterBodyBoxGrid'
 import AddToShoppingCartIcon from '../icons/AddToShoppingCartIcon'
 import ShoesGrid from '../ShoesGrid'
+import Image from '../Image'
 import {Link} from 'react-router-dom'
 import LeftArrow from '../icons/LeftArrow'
 
@@ -10,7 +11,7 @@ function ItemDetailPage({shoesData,shoeName,putItemInTheCart}) {
     useEffect(()=>{
         if(shoesData!==undefined){
             shoesData.forEach((shoe)=>{
-                if(shoe.shoeName === shoeName){
+                if(shoe.name === shoeName){
                     setItemData(shoe)
                 }
             })
@@ -19,9 +20,10 @@ function ItemDetailPage({shoesData,shoeName,putItemInTheCart}) {
     return (
         <>
         <div className="itemContainer">
+            {console.log(shoeName)}
             <button className='goBackButton'><LeftArrow size={18} color={'rgb(150, 150, 150)'}/>{itemData.brand}</button>
-            <h1>{itemData.shoeName}</h1>
-            <img src={itemData.imageLinks} alt={itemData.brand}/>
+            <h1>{itemData.name}</h1>
+            <Image shoe={itemData} imageType={'original'}></Image>
             {/* <FilterBodyBoxGrid/> */}
             <div className="purchaseOptions">
                 <Link className="purchase" to='/my/checkout' onClick={()=>putItemInTheCart({...itemData,selectedSize:5})}>
@@ -33,7 +35,7 @@ function ItemDetailPage({shoesData,shoeName,putItemInTheCart}) {
             </div>
             <div className="itemDescription">
                 <h2>About this product</h2>
-                <p>{itemData.description}</p>
+                <p>{itemData.story}</p>
             </div>
         </div>
         <ShoesGrid count={shoesData.length} showPrice={false} showHeader={true} headerContent={'related items'}

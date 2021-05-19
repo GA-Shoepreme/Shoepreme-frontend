@@ -7,20 +7,45 @@ import ResultHeader from './ResultHeader'
 function ShoesGrid({count, showPrice, showHeader, headerContent, shopButton, shoesData}) {
 
     let [shoes, setShoes]= useState([])
-
-    let shoesList = []
-
+    let [sortBy, setSortBy] = useState('Most Popular')
+    let [shoeCardList, setShoeCardList] = useState([])
     useEffect(()=>{
         if(shoesData!==undefined){
-            setShoes(shoesData)
+            //Sort the results Price High Price Low
+            let sortedShoes = shoesData.sort((shoeA,shoeB)=>{
+                if(sortBy==='Newest'){
+                    const shoeBDate = (shoeB.releaseDate !== null)?parseInt(shoeB.releaseDate.slice(0,10).replace('-','')):0
+                    const shoeADate = (shoeA.releaseDate !== null)?parseInt(shoeA.releaseDate.slice(0,10).replace('-','')):0
+                    return shoeBDate-shoeADate
+                }
+                if(sortBy==='Price High'){
+                    const shoeBPrice = shoeB.retailPrice
+                    const shoeAPrice = shoeA.retailPrice
+                    console.log(shoeBPrice)
+                    return shoeBPrice-shoeAPrice
+                }
+                if(sortBy==='Price Low'){
+                    const shoeBPrice = shoeB.retailPrice
+                    const shoeAPrice = shoeA.retailPrice
+                    return shoeAPrice-shoeBPrice
+                }
+                return shoeB.estimatedMarketValue - shoeA.estimatedMarketValue
+            })
+            setShoes(sortedShoes)
         }
-    },[shoesData])
+    },[shoesData,sortBy])
 
-    for(let i=0; i<count; i++){
-        shoesList.push(
-            <ShoeCard shoeData={shoes[i]} key ={i}/>
-        )
-    }
+    useEffect(()=>{
+        if(JSON.stringify(shoes)!=='[]'){
+            console.log(sortBy)
+            let cardList = shoes.map((shoe,index)=>{
+                return(
+                    <ShoeCard key={index} shoeData={shoe}/>
+                )
+            })
+            setShoeCardList(cardList)
+        }
+    },[shoes,sortBy])
     
     let toggleFilters = () =>{
         let filters = document.querySelector('.filters')
@@ -37,12 +62,14 @@ function ShoesGrid({count, showPrice, showHeader, headerContent, shopButton, sho
     <>
     <ResultHeader count={count} toggleFilters={toggleFilters}/><Filters/></>
 
+
     return (
         <div className="shoeGridContainer">
             {header}
-            <SortBy/>
+            <SortBy setSortBy={setSortBy}/>
             <div className="shoeGrid">
-                {shoesList}
+                {console.log(shoes)}
+                {shoeCardList}
             </div>
             {(shopButton)?
             <button className="primaryButton">

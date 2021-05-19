@@ -3,7 +3,7 @@ import React,{useState} from 'react';
 import DownArrow from './icons/DownArrow'
 import UpArrow from './icons/UpArrow'
 
-function SortBy(props) {
+function SortBy({setSortBy}) {
 
     let [dropIsOpen, setDropIsOpen] = useState(true);
     let [currentSort, setCurrentSort] = useState('Most Popular');
@@ -21,6 +21,7 @@ function SortBy(props) {
 
     const changeSortMode =(e)=>{
          let newSortMode =e.target.innerHTML
+         setSortBy(newSortMode)
          setCurrentSort(newSortMode)
          toggleDropDown()
     }
