@@ -5,6 +5,15 @@ function CheckOutCardBody({subTotal, itemCounts, cardType, cart, totalPrice, shi
 
     let priceForStripe= totalPrice*100;
 
+    const checkOutCart = ()=> {
+        axios({
+            url:'https://shoepreme-api.herokuapp.com/cart',
+              method: 'POST',
+              data: cart
+            }).then(response =>console.log(response))
+          }
+    }
+
     const onToken = (token) => {
         axios({
         url:'https://shoepreme-api.herokuapp.com/cart/payment',
@@ -26,6 +35,7 @@ function CheckOutCardBody({subTotal, itemCounts, cardType, cart, totalPrice, shi
                 <h2>May 13, 2021</h2>
                 
                 <StripeCheckout
+                onClick={checkOutCart}
                 name="ShoePreme"
                 label="Pay Now"
                 token={onToken}
