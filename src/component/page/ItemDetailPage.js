@@ -6,8 +6,6 @@ import Image from '../Image'
 import {Link} from 'react-router-dom'
 import LeftArrow from '../icons/LeftArrow'
 import axios from 'axios'
-import { set } from 'mongoose';
-
 function ItemDetailPage({shoeId,putItemInTheCart}) {
     let [itemData, setItemData] = useState({})
 
