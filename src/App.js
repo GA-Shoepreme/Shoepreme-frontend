@@ -8,7 +8,7 @@ import Footer from './component/Footer'
 import {Route} from 'react-router-dom'
 import {useState,useEffect} from 'react'
 import SearchPage from './component/SearchPage'
-import { set } from 'mongoose';
+
 function App() {
   
   const [cart, setCart] = useState([])
