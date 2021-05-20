@@ -12,7 +12,6 @@ function CheckOutCardBody({subTotal, itemCounts, cardType, cart, totalPrice, shi
               data: cart
             }).then(response =>console.log(response))
           }
-    }
 
     const onToken = (token) => {
         axios({
