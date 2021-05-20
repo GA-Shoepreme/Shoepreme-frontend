@@ -9,7 +9,6 @@ function CheckOutPage({itemCounts, cart}) {
     const [shippingFee, setShippingFee] = useState(10)
     const [taxFee, setTaxFee] = useState(10)
 
-
     useEffect(()=>{
         if(cart!==[]){
             let total = 0;
@@ -27,7 +26,7 @@ function CheckOutPage({itemCounts, cart}) {
     },[subTotal])
 
     const checkOutContainer = (cart)=>{
-        if(cart.length>1){
+        if(cart.length>=1){
 
             return(
             <div className='checkOutContainer'>

@@ -7,24 +7,34 @@ import CheckOutPage from './component/page/CheckOutPage'
 import Footer from './component/Footer'
 import {Route} from 'react-router-dom'
 import {useState,useEffect} from 'react'
-
+import SearchPage from './component/SearchPage'
+import { set } from 'mongoose';
 function App() {
   
   const [cart, setCart] = useState([])
+  const [isSearching, setIsSearching] = useState(false)
+  const [searchKeyword, setSearchKeyword] = useState('')
 
   const putItemInTheCart=(item)=>{
     setCart([...cart,item])
   }
-
+  const changeSeachKeyword=(e)=>{
+    let inputValue = e.target.value
+    setSearchKeyword(inputValue)
+  }
   return (
     <div className="App">
-      <NavBar itemCounts={cart.length}/>
+      <NavBar itemCounts={cart.length} isSearching={isSearching} setIsSearching={setIsSearching} searchKeyword={searchKeyword} changeSeachKeyword={changeSeachKeyword}/>
+      {(!isSearching)?
+      <>
       <Route exact path='/' render={()=>
       <LandingPage/>
       }/>
       <Route exact path='/:pagename' render={(routerProps)=><ChildPage pagename={routerProps.match.params.pagename}/>}/>
-      <Route exact path='/shoes/:shoename' render={(routerProps)=><ItemDetailPage  shoeName={routerProps.match.params.shoename} putItemInTheCart={putItemInTheCart}/>}/>
+      <Route exact path='/shoes/:id' render={(routerProps)=><ItemDetailPage shoeId={routerProps.match.params.id} putItemInTheCart={putItemInTheCart}/>}/>
       <Route exact path='/my/checkout' render={(routerProps)=><CheckOutPage itemCounts={cart.length} cart={cart}/>}/>
+      </>:
+      <SearchPage isSearching={isSearching} searchKeyword={searchKeyword}/>}
     </div>
   );
 }

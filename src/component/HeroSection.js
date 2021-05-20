@@ -26,8 +26,6 @@ function HeroSection({pagename}) {
         else {
             return(
                 <>
-                <h1>New arrivals for summer</h1>
-                <button>Show now</button>
                 </>
             )
         }
@@ -41,9 +39,11 @@ function HeroSection({pagename}) {
             backgroundImage: (pagename)? `url(${brandData[pagename].backgroundImage})`: null
         }}
         >
+            {(pagename)?
             <div className='heroContents'>
                 {heroContent(pagename)}
             </div>
+            :null}
         </div>
     );
 }

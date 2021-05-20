@@ -51,6 +51,11 @@ h1,h2,h3,h4,h5,h6 {
   width:100%;
   margin-bottom: 1rem;
 }
+@media only screen and (min-width:1024px){
+  .primaryButton{
+    width: 300px;
+  }
+}
 .primaryButton a{
   color:white;
 }
@@ -97,8 +102,25 @@ h1,h2,h3,h4,h5,h6 {
   z-index:1;
   border-bottom: 1px solid var(--bg-gray-darker);
 }
+@media only screen and (min-width: 1024px) {
+  .navigationBar{
+    padding: 0 2rem;
+    
+  }
+  .menuItemLarge{
+    font-weight: 600;
+  }
+}
 .menuLeftSide{
   display:flex;
+}
+.menuItemLarge{
+  display: inline-flex;
+  align-items: center;
+  padding-left:1.5rem;
+}
+.menuItemLarge a {
+  padding-right:1rem;
 }
 #logoForLargeScreen{
   display:none;
@@ -147,6 +169,15 @@ h1,h2,h3,h4,h5,h6 {
   width:100%;
   padding-left: 0.5rem;
 }
+.searchResult{
+  padding-top: var(--mobile-header-height);
+}
+.noSearchResult{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height:100vh;
+}
 .logo a{
   display: flex;
   align-items: center;
@@ -179,7 +210,8 @@ h1,h2,h3,h4,h5,h6 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding:6rem 2rem;
+  height:81vh;
+  padding: 0 10vw 0 10vw;
 }
 .brandHeroContentsContainer img{
   width: 25%;
@@ -191,14 +223,20 @@ h1,h2,h3,h4,h5,h6 {
 .brandHeroContentsContainer p{
   font-size: 0.8rem;
 }
+.heroContents>div>img{
+  width: 8rem;
+}
 .heroContentsContainer{
-  height:50vh;
+  height:90vh;
   margin: 0 auto;
   background-image: url('https://images.unsplash.com/photo-1579338908476-3a3a1d71a706?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=934&q=80');
   background-repeat: no-repeat;
-  background-size:contain;
+  background-size:cover;
   background-attachment: fixed;
-  background-position: 50% -10%;
+  background-position: center;
+}
+@media only screen and (min-width:1024px){
+
 }
 .heroContents{
   padding-top:var(--mobile-header-height);
@@ -225,6 +263,7 @@ h1,h2,h3,h4,h5,h6 {
   margin-bottom:0.5rem;
 }
 /* heroimage-close */
+
 /* shoeGrid*/
 .shoeGridContainer{
   padding:1rem;
@@ -239,6 +278,18 @@ h1,h2,h3,h4,h5,h6 {
   grid-gap: 0.5rem;
   margin-bottom: 1rem;
 }
+@media only screen and (min-width: 1024px) {
+  .shoeGrid{
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  .shoeGridContainer{
+    padding:1rem 2rem;
+  }
+  .primaryButtonWrapper{
+    display: flex;
+    justify-content: center;
+  }
+}
 .shoeItem{
   background-color: white;
   box-shadow: 0px 2px 8px var(--shadow);
@@ -246,7 +297,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 .shoeItem img{
   width:100%;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 /*close shoeGrid*/
 
@@ -259,6 +310,26 @@ h1,h2,h3,h4,h5,h6 {
   align-content: center;
   padding:1rem;
   margin-bottom: 2rem;
+}
+@media only screen and (min-width: 1024px){
+  .sortByBox {
+    width: 300px;
+    padding:0.75rem;
+  }
+  .shoeGridContainer .header{
+    display:flex;
+    justify-content: space-between;
+  }
+  .shoeGridContainer h4{
+    margin:0;
+  }
+  .dropbtn div{
+    display: flex;
+    align-items: center;
+  }
+  .dropdown{
+    padding-left:0.5rem;
+  }
 }
 .sortByBox button{
  background-color: rgba(0,0,0,0);
@@ -296,8 +367,87 @@ h1,h2,h3,h4,h5,h6 {
 /* close sort by */
 
 /* Filter */
+.checkBoxBox{
+  margin-bottom:1rem;
+  display: block;
+  position: relative;
+  cursor: pointer;
+  height:1.5rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  align-items:center;
+  padding-left:1.75rem;
+}
+.checkBoxBox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+.modelCheckBoxLabel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1.25rem;
+  width: 1.25rem;
+  background-color: #eee;
+  white-space: nowrap;
+}
+.checkBoxBox:hover input ~ .modelCheckBoxLabel {
+  background-color: #ccc;
+}
+.checkBoxBox input:checked ~ .modelCheckBoxLabel {
+  background-color: var(--primary-color);
+}
+.modelCheckBoxLabel:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+.childPageBodyContainer{
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
 .filters {
   display:none;
+  flex-direction: column;
+}
+@media only screen and (min-width:1024px){
+  .filters {
+    display:flex;
+  }
+  .filterContainer{
+    margin-top: 2rem;
+    padding-left:2rem;
+  }
+  .childPageBodyContainer h4 {
+    font-size:24px;
+  }
+}
+@media only screen and (max-width:1023px){
+  .filterContainer {
+    display:none;
+  }
+  .childPageBodyContainer{
+    display:flex;
+  }
+}
+.sizeFilterBoxGrid{
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap:0.5rem;
+}
+.sizeFilterBox{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid var(--bg-gray-darker);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  width: 3rem;
 }
 .filterHeader{
   width:100%;
@@ -479,3 +629,16 @@ h1,h2,h3,h4,h5,h6 {
   font-size: 1.5rem;
 }
 /* close noItemCar */
+
+/* Stripe */
+.Checkout .is-desktop{
+  font-family: 'Open Sans', sans-serif !important;
+  display:none !important;
+}
+.Checkout .Header{
+  background-color: var(--primary-color);
+}
+#modal-header, #modal-body{
+  background-color: #d9ffe8;
+  } 
+/* close */

@@ -6,12 +6,27 @@ import SearchIcon from './icons/SearchIcon'
 import LeftArrow from './icons/LeftArrow'
 import {Link} from 'react-router-dom'
 import { Sling as Hamburger } from 'hamburger-react'
-import {useState} from 'react'
-function NavBar({itemCounts}) {
-    let menuLabel = ['Air Jordan', 'Nike', 'Adidas', 'Yeezy', 'More Sneakers', 'New Releases']
+import {useState, useEffect} from 'react'
+function NavBar({itemCounts, setIsSearching, searchKeyword, changeSeachKeyword}) {
+    let menuLabel = ['Air Jordan', 'Nike', 'Adidas', 'Yeezy', 'More Sneakers']
     
     let [isOpen, setIsOpen]= useState(false);
     let [isOpenSearch, setIsOpenSeacrh]= useState(false);
+    let [currentURL, setCurrentURL] = useState(window.location.href);
+    let [innerWidth, setInnerWidth] = useState(window.innerWidth);
+
+    useEffect(() => {
+        window.addEventListener('resize', function(event) {
+            setInnerWidth(window.innerWidth)
+        }, true);
+        
+        // cleanup this component
+        return () => {
+            window.removeEventListener('resize', function(event) {
+                setInnerWidth(window.innerWidth)
+            }, true);
+        };
+      }, []);
 
     const toggleMenu =()=>{
         let navMenu = document.querySelector('#navMenu')
@@ -47,6 +62,12 @@ function NavBar({itemCounts}) {
         )
     })
 
+    let menuListWithOutToggleMenu = menuLabel.map((label)=>{
+        return(
+            <Link key={label} to={`/${label.toLowerCase().replace(' ','_')}`}>{label}</Link>
+        )
+    })
+
     return (
         <nav className="navigationBar">
             <div className="menuLeftSide">
@@ -55,6 +76,12 @@ function NavBar({itemCounts}) {
                         <Logo size={140}/>
                     </Link>
                 </div>
+                {(innerWidth>=1024)?
+                <div className="menuItemLarge">
+                    {menuListWithOutToggleMenu}
+                </div>
+                :null
+                }
             </div>
             <div className="menuRightSide">
                 <div id="navMenu">
@@ -63,21 +90,26 @@ function NavBar({itemCounts}) {
                 <div className="menuIcon" id="searchSmallIcon" onClick={toggleSearchBar}>
                         <SearchIcon size={24} color={'black'}/>
                 </div>
-                <div className="menuIcon">
-                    <Link to='/my/checkout'>
+                <div className="menuIcon" onClick={()=>{setCurrentURL(window.location.href)}}>
+                    {(currentURL!=='http://localhost:3000/my/checkout')?<Link to='/my/checkout'>
                         <ShoppingBagIcon size={24}/>
                         {(itemCounts !==0)?<div className="itemCount">{(itemCounts>0)?itemCounts:null}</div>:null}
-                    </Link>
+                    </Link>:<Link to='/'>
+                        <ShoppingBagIcon size={24}/>
+                        {(itemCounts !==0)?<div className="itemCount">{(itemCounts>0)?itemCounts:null}</div>:null}
+                    </Link>}
                 </div>
+                {(innerWidth<=1024)?
                 <div className="menuButton" onClick={toggleMenu}>
                     <Hamburger size={24} toggled={isOpen}/>
                 </div>
+                :null}
             </div>
             <div className="searchNav">
             <span onClick={toggleSearchBar}>
                 <LeftArrow size={26} color={'black'}/>
             </span>
-            <SearchBar/>
+            <SearchBar searchKeyword={searchKeyword} setIsSearching={setIsSearching} changeSeachKeyword={changeSeachKeyword}/>
             </div>
         </nav>
     );

@@ -13,7 +13,7 @@ function ShoeCard({shoeData}) {
 
     return (
         <div className='shoeItem'>
-            <Link to={`/shoes/${encodeURIComponent(shoe.name)}`}>
+            <Link to={`/shoes/${encodeURIComponent(shoe._id)}`}>
                 <div>
                     <Image shoe={shoe} imageType={'thumbnail'}/>
                 </div>

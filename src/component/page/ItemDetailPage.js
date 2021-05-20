@@ -5,22 +5,22 @@ import ShoesGrid from '../ShoesGrid'
 import Image from '../Image'
 import {Link} from 'react-router-dom'
 import LeftArrow from '../icons/LeftArrow'
+import axios from 'axios'
+import { set } from 'mongoose';
 
-function ItemDetailPage({shoesData,shoeName,putItemInTheCart}) {
+function ItemDetailPage({shoeId,putItemInTheCart}) {
     let [itemData, setItemData] = useState({})
+
     useEffect(()=>{
-        if(shoesData!==undefined){
-            shoesData.forEach((shoe)=>{
-                if(shoe.name === shoeName){
-                    setItemData(shoe)
-                }
-            })
-        }
-    },[shoesData])
+        axios.get(`https://shoepreme-api.herokuapp.com/shoes/${shoeId}`)
+        .then(res=>res.data)
+        .then(data=>setItemData(data))
+    },[])
+
     return (
         <>
+        {/* {console.log(shoeId)} */}
         <div className="itemContainer">
-            {console.log(shoeName)}
             <button className='goBackButton'><LeftArrow size={18} color={'rgb(150, 150, 150)'}/>{itemData.brand}</button>
             <h1>{itemData.name}</h1>
             <Image shoe={itemData} imageType={'original'}></Image>
@@ -38,8 +38,8 @@ function ItemDetailPage({shoesData,shoeName,putItemInTheCart}) {
                 <p>{itemData.story}</p>
             </div>
         </div>
-        <ShoesGrid count={shoesData.length} showPrice={false} showHeader={true} headerContent={'related items'}
-        shopButton={true} shoesData={shoesData}/>
+        {/* <ShoesGrid count={shoesData.length} showPrice={false} showHeader={true} headerContent={'related items'}
+        shopButton={true} shoesData={shoesData}/> */}
         </>
     );
 }

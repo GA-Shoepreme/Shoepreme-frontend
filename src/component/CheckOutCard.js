@@ -2,6 +2,7 @@ import React,{ useState } from 'react';
 import FilterHeader from './FilterHeader'
 import CheckOutCardBody from './CheckOutCardBody'
 
+
 function CheckOutCard({cardType, header, subTotal, itemCounts, cart, totalPrice, shippingFee, taxFee}) {
 
     const [isOpen, setIsOpen] = useState(false)

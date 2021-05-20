@@ -3,17 +3,17 @@ import FilterHeader from './FilterHeader'
 import FilterBodyCheckBox from './FilterBodyCheckBox'
 import FilterBodyBoxGrid from './FilterBodyBoxGrid'
 import FilterBodyFromTo from './FilterBodyFromTo'
-function Filter({bodyType}) {
+function Filter({shoesData, bodyType, opened}) {
     let filterBody;
     switch(bodyType){
         case "MODEL":
-            filterBody= <FilterBodyCheckBox/>
+            filterBody= <FilterBodyCheckBox shoesData={shoesData}/>
             break;
         case "MEN'S SIZES": case "WOMEN'S SIZES": case "YOUTH SIZES": case "COLOR":
-            filterBody = <FilterBodyBoxGrid/>
+            filterBody = <FilterBodyBoxGrid shoesData={shoesData} bodyType={bodyType}/>
             break;
         default:
-            filterBody = <FilterBodyFromTo/>
+            filterBody = <FilterBodyFromTo shoesData={shoesData} />
     }
 
     const [isOpen, setIsOpen] = useState(false)

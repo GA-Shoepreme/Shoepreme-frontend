@@ -2,6 +2,7 @@ import React,{useEffect,useState} from 'react';
 import axios from 'axios'
 import HeroSection from '../HeroSection'
 import ShoesGrid from '../ShoesGrid'
+import Filters from '../Filters'
 
 function ChildPage({pagename}) {
 
@@ -17,8 +18,14 @@ function ChildPage({pagename}) {
         <div>
             {console.log(shoesData.length)}
             <HeroSection pagename={pagename}></HeroSection>
-            <ShoesGrid count={shoesData.length} showPrice={false} showHeader={true} headerContent={null}
-        shopButton={false} shoesData={shoesData}/>
+            <div className="childPageBodyContainer">
+                
+                <div>
+                    <Filters shoesData={shoesData}/>
+                </div>
+                <ShoesGrid count={shoesData.length} showPrice={false} showHeader={true} headerContent={null}
+            shopButton={false} shoesData={shoesData}/>
+            </div>
         </div>
     );
 }

@@ -4,11 +4,26 @@ import {Link} from 'react-router-dom'
 import SortBy from './SortBy'
 import Filters from './Filters'
 import ResultHeader from './ResultHeader'
-function ShoesGrid({count, showPrice, showHeader, headerContent, shopButton, shoesData}) {
+function ShoesGrid({count, showPrice, showHeader, headerContent, shopButton, shoesData, sortFunction=true}) {
 
     let [shoes, setShoes]= useState([])
     let [sortBy, setSortBy] = useState('Most Popular')
     let [shoeCardList, setShoeCardList] = useState([])
+    let [innerWidth, setInnerWidth] = useState(window.innerWidth);
+
+    useEffect(() => {
+        window.addEventListener('resize', function(event) {
+            setInnerWidth(window.innerWidth)
+        }, true);
+        
+        // cleanup this component
+        return () => {
+            window.removeEventListener('resize', function(event) {
+                setInnerWidth(window.innerWidth)
+            }, true);
+        };
+      }, []);
+
     useEffect(()=>{
         if(shoesData!==undefined){
             //Sort the results Price High Price Low
@@ -51,7 +66,7 @@ function ShoesGrid({count, showPrice, showHeader, headerContent, shopButton, sho
         let filters = document.querySelector('.filters')
         let filtersDisplay = window.getComputedStyle(filters).getPropertyValue('display')
         if(filtersDisplay === 'none'){
-            filters.style.display = 'block'
+            filters.style.display = 'flex'
         } else {
             filters.style.display = 'none'
         }
@@ -60,23 +75,26 @@ function ShoesGrid({count, showPrice, showHeader, headerContent, shopButton, sho
     let header = (headerContent)?
     <h4>{headerContent}</h4>:
     <>
-    <ResultHeader count={count} toggleFilters={toggleFilters}/><Filters/></>
+    <ResultHeader count={count} toggleFilters={toggleFilters} innerWidth={innerWidth}/>{(innerWidth>=1024)?null:<Filters/>}</>
 
 
     return (
         <div className="shoeGridContainer">
+            <div class='header'>
             {header}
-            <SortBy setSortBy={setSortBy}/>
+            {(sortFunction)?<SortBy setSortBy={setSortBy}/>:null}
+            </div>
             <div className="shoeGrid">
-                {console.log(shoes)}
                 {shoeCardList}
             </div>
             {(shopButton)?
+            <div className='primaryButtonWrapper'>
             <button className="primaryButton">
                 <Link to={`/${headerContent.toLowerCase().replace(' ','_')}`}>
-                    Shop {headerContent}
+                    See all {headerContent}
                 </Link>
             </button>
+            </div>
             :
             null}
         </div>

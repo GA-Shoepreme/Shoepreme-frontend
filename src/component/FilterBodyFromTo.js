@@ -3,7 +3,7 @@ import React from 'react';
 function FilterBodyFromTo(props) {
     return (
         <>
-            sds
+            <input type="range" min="0" max="11"/>
         </>
     );
 }
