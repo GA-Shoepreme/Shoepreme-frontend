@@ -76,10 +76,10 @@ function CheckOutCardBody({subTotal, itemCounts, cardType, cart, totalPrice, shi
                     {cart.map((item,index)=>{return(
                         <div key={index} className="checkOutItem">
                         <div className="left">
-                            <img src={item.imageLinks} alt={item.shoeName} />
+                            <img src={item.image.thumbnail} alt={item.shoeName} />
                             <div>
-                                <h2>{item.shoeName}</h2>
-                                <h3>{item.selectedSize}</h3>
+                                <h2>{item.name}</h2>
+                                <h3>{item.gender} {item.selectedSize} </h3>
                             </div>
                         </div>
                         <div>

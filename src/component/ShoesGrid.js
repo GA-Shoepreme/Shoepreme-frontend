@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom'
 import SortBy from './SortBy'
 import Filters from './Filters'
 import ResultHeader from './ResultHeader'
+import Button from '@material-ui/core/Button'
 function ShoesGrid({count, showPrice, showHeader, headerContent, shopButton, shoesData, sortFunction=true}) {
 
     let [shoes, setShoes]= useState([])
@@ -36,7 +37,6 @@ function ShoesGrid({count, showPrice, showHeader, headerContent, shopButton, sho
                 if(sortBy==='Price High'){
                     const shoeBPrice = shoeB.retailPrice
                     const shoeAPrice = shoeA.retailPrice
-                    console.log(shoeBPrice)
                     return shoeBPrice-shoeAPrice
                 }
                 if(sortBy==='Price Low'){
@@ -52,23 +52,27 @@ function ShoesGrid({count, showPrice, showHeader, headerContent, shopButton, sho
 
     useEffect(()=>{
         if(JSON.stringify(shoes)!=='[]'){
-            console.log(sortBy)
-            let cardList = shoes.map((shoe,index)=>{
+            let cardList = shoes.map((shoe)=>{
                 return(
-                    <ShoeCard key={index} shoeData={shoe}/>
+                    <ShoeCard shoeData={shoe}/>
                 )
             })
             setShoeCardList(cardList)
+        } else {
+            setShoeCardList([<h1>no result</h1>]) 
         }
     },[shoes,sortBy])
     
     let toggleFilters = () =>{
         let filters = document.querySelector('.filters')
+        let filterContainer = document.querySelector('.filterContainer')
         let filtersDisplay = window.getComputedStyle(filters).getPropertyValue('display')
         if(filtersDisplay === 'none'){
             filters.style.display = 'flex'
+            filterContainer.style.display = 'flex'
         } else {
             filters.style.display = 'none'
+            filterContainer.style.display = 'none'
         }
     }
 
@@ -80,7 +84,7 @@ function ShoesGrid({count, showPrice, showHeader, headerContent, shopButton, sho
 
     return (
         <div className="shoeGridContainer">
-            <div class='header'>
+            <div className='header'>
             {header}
             {(sortFunction)?<SortBy setSortBy={setSortBy}/>:null}
             </div>
@@ -89,11 +93,11 @@ function ShoesGrid({count, showPrice, showHeader, headerContent, shopButton, sho
             </div>
             {(shopButton)?
             <div className='primaryButtonWrapper'>
-            <button className="primaryButton">
+            <Button>
                 <Link to={`/${headerContent.toLowerCase().replace(' ','_')}`}>
                     See all {headerContent}
                 </Link>
-            </button>
+            </Button>
             </div>
             :
             null}

@@ -38,28 +38,38 @@ function LandingPage(props) {
       switch(label){
         case 'New releases':
           return(
+            <div className="landingShoeGridBox">
             <ShoesGrid key={label} count={newReleaseData.length} showPrice={false} showHeader={true} headerContent={label}
             shopButton={false} shoesData={newReleaseData}/>
+            </div>
           )
         case 'Air jordan': 
           return(
+            <div className="landingBrandShoeGridBox">
             <ShoesGrid key={label} count={8} showPrice={false} showHeader={true} headerContent={label}
             shopButton={true} shoesData={jordanData}/>
+            </div>
           )
         case 'Adidas':
           return(
+            <div className="landingBrandShoeGridBox">
             <ShoesGrid key={label} count={8} showPrice={false} showHeader={true} headerContent={label}
             shopButton={true} shoesData={adidasData}/>
+            </div>
           )
         case 'Yeezy':
           return(
+            <div className="landingBrandShoeGridBox">
             <ShoesGrid key={label} count={8} showPrice={false} showHeader={true} headerContent={label}
             shopButton={true} shoesData={yeezyData}/>
+            </div>
           )
         default:
           return(
+            <div className="landingBrandShoeGridBox">
             <ShoesGrid key={label} count={8} showPrice={false} showHeader={true} headerContent={label}
             shopButton={true} shoesData={nikeData}/>
+            </div>
           )
       }
     })

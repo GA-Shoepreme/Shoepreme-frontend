@@ -3,11 +3,16 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import {BrowserRouter as Router} from 'react-router-dom'
 import reportWebVitals from './reportWebVitals';
+import { ThemeProvider } from '@material-ui/styles';
+import MuiTheme from './component/uiTheme/MuiTheme'
 
 ReactDOM.render(
+  <ThemeProvider theme={MuiTheme()}>
   <Router>
     <App />
-  </Router>,
+  </Router>
+  </ThemeProvider>
+  ,
   document.getElementById('root')
 );
 

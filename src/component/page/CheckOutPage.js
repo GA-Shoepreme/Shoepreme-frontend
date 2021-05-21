@@ -30,13 +30,12 @@ function CheckOutPage({itemCounts, cart}) {
 
             return(
             <div className='checkOutContainer'>
-            {console.log(cart)}
             <CheckOutCard header={false} cardType={'Order Summary'} totalPrice={totalPrice} itemCounts={itemCounts}/>
 
             <CheckOutCard header={true} cardType={'Your Items'} cart={cart} subTotal={subTotal} shippingFee={shippingFee} taxFee={taxFee} totalPrice={totalPrice}/>
 
             <CheckOutCard header={true} cardType={'Check Out Information'}/>
-            <CheckOutCard header={false}/>
+            {/* <CheckOutCard header={false}/> */}
             </div>
             )
         }

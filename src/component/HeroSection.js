@@ -36,7 +36,7 @@ function HeroSection({pagename}) {
         className={(pagename)?'brandHeroContentsContainer':'heroContentsContainer'}
 
         style={{
-            backgroundImage: (pagename)? `url(${brandData[pagename].backgroundImage})`: null
+            backgroundImage: (pagename)? `url(${brandData[pagename].backgroundImage})`: `url("./assets/images/mainHeroImage.png")`
         }}
         >
             {(pagename)?

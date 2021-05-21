@@ -87,9 +87,15 @@ function NavBar({itemCounts, setIsSearching, searchKeyword, changeSeachKeyword})
                 <div id="navMenu">
                     {menuList}
                 </div>
+                {(innerWidth<=1024)?
                 <div className="menuIcon" id="searchSmallIcon" onClick={toggleSearchBar}>
                         <SearchIcon size={24} color={'black'}/>
-                </div>
+                        
+                </div>:
+                    <div>
+                    <SearchBar searchKeyword={searchKeyword} setIsSearching={setIsSearching} changeSeachKeyword={changeSeachKeyword}/>
+                    </div>
+                }
                 <div className="menuIcon" onClick={()=>{setCurrentURL(window.location.href)}}>
                     {(currentURL!=='http://localhost:3000/my/checkout')?<Link to='/my/checkout'>
                         <ShoppingBagIcon size={24}/>

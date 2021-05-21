@@ -2,8 +2,8 @@ import React from 'react';
 
 function Footer(props) {
     return (
-        <nav>
-            footer
+        <nav className='footer'>
+            Footer will be updated soon.
         </nav>
     );
 }
