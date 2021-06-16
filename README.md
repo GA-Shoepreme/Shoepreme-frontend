@@ -1,70 +1,107 @@
-# Getting Started with Create React App
+# Shoepreme
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### Description
 
-## Available Scripts
+Shoepreme is an app for shoe enthusiast who are seeking the most in style and newly realeased kicks in the market. Whether you want browse across all shoes or by brands, Shoepreme can help you build your dream shoe cart!
 
-In the project directory, you can run:
+#### Live Links
 
-### `npm start`
+Frontend: [https://warm-hollows-25488.herokuapp.com/](https://warm-hollows-25488.herokuapp.com/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Backend: [https://shoepreme-api.herokuapp.com/](https://shoepreme-api.herokuapp.com/)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Screenshots
 
-### `npm test`
+**Landing Page**
+![landingpage](https://user-images.githubusercontent.com/47792576/119093065-1317fd80-b9c4-11eb-9a2a-f5eee01db08c.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Brand Specific Page**
+![brandpage](https://user-images.githubusercontent.com/47792576/119093034-0a272c00-b9c4-11eb-9fe9-46440e0d5666.png)
 
-### `npm run build`
+**Detail Page**
+![DetailPage](https://user-images.githubusercontent.com/47792576/119093077-16ab8480-b9c4-11eb-8f8e-0b606703c4e6.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Checkout Page**
+![Checkoutpage](https://user-images.githubusercontent.com/47792576/119093042-0d221c80-b9c4-11eb-83d5-a9a763a3103a.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Technologies Used
 
-### `npm run eject`
+- HTML, CSS
+- Javascript
+- React
+- NodeJS
+- Express
+- MongoDB
+- Mongoose
+- Heroku
+- Stripe
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## User Stories
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**MVP Goals**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- As a user, I would like to the landing page to show the newest released shoes first
+- As a user, I would like to be able to see all shoes available on the app
+- As a user, I would like to be able to browse shoes by the popular brands in the market
+- As a user, I would like to be able to click on a shoe and learn more about it
+- As a user, I would like to be able to filter the shoe collection by gender, realease date, and price
+- As a user, I would like to be able to add shoes that I like to a shopping cart
+- As a user, I would like to be able to see my cart before committing to checkout
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+**Strecth Goals**
 
-## Learn More
+- Implement Stripe test checkout
+- Offer the ability for users to log in and save their cart
+- Create a user profile for logged in users
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Installation Instructions
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+To run locally, you must acquire all necessary environment variables then follow the installation instructions below:
 
-### Code Splitting
+1. Fork and clone [this repository](https://github.com/GA-Shoepreme/Shoepreme-frontend)
+2. Install all dependencies
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+   ```
+   npm install
+   ```
 
-### Analyzing the Bundle Size
+3. Install devDependencies
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+   ```
+   npm install nodemon --save-dev
+   ```
 
-### Making a Progressive Web App
+4. Start the local server
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+   ```
+   npm run dev
+   ```
 
-### Advanced Configuration
+Otherwise, checkout our [live links](#live-links)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Component Hierarchy
 
-### Deployment
+## Wireframes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+**Landing Page**
+![SEI_Project3_Sneaker_Ecommerce_Page_1](https://media.git.generalassemb.ly/user/34490/files/29c8af80-b347-11eb-8f0c-c67fecde3c3f)
 
-### `npm run build` fails to minify
+**Brand Specfic Page**
+![SEI_Project3_Sneaker_Ecommerce_Page_2](https://media.git.generalassemb.ly/user/34490/files/45cc5100-b347-11eb-8676-0a64469bf644)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Detail Page**
+![SEI_Project3_Sneaker_Ecommerce_Page_4](https://media.git.generalassemb.ly/user/34490/files/80ce8480-b347-11eb-9866-73f812ba63fc)
+
+**Checkout Page**
+![SEI_Project3_Sneaker_Ecommerce (1)_Page_5](https://media.git.generalassemb.ly/user/34490/files/7318ff00-b347-11eb-897c-babce8ab68f6)
+
+## Contribute
+
+Source Code:  
+[https://github.com/GA-Shoepreme/Shoepreme-frontend](https://github.com/GA-Shoepreme/Shoepreme-frontend)  
+[https://github.com/GA-Shoepreme/shoepreme-server/commits/main](https://github.com/GA-Shoepreme/shoepreme-server/commits/main)
+
+Issues:  
+[https://github.com/GA-Shoepreme/Shoepreme-frontend/issues](https://github.com/GA-Shoepreme/Shoepreme-frontend/issues)  
+[https://github.com/GA-Shoepreme/shoepreme-server/issues](https://github.com/GA-Shoepreme/shoepreme-server/issues)
